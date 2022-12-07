@@ -1,0 +1,35 @@
+{
+  "bot_section": {
+    "bot_token": "666666666:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "bot_name": "BotName",
+    "tdlib_command": "/path/to/tdlib/libtdjson.so.*.*.*",
+    "tdlib_db": "/path/to/tdlib_db",
+    "api_id": 666666,
+    "api_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "db_section": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "memory",
+    "user": "pguser",
+    "password": "pgpassword"
+  },
+  "user_section": {
+    "language": "ru",
+    "time_zone": "Europe/Moscow",
+    "week_starts_on": 1
+  },
+  "test_section": {
+    "chat_id": 666666666,
+    "bot_id": 666666666,
+    "bot_name": "MemoryManager",
+    "user_id": 666666666,
+    "user_name": "TestUserName",
+    "user_language": "ru",
+    "user_time_zone": "Europe/Moscow",
+    "user_week_starts_on": 1
+  },
+  "admin_section": {
+    "user_id": 666666666
+  }
+}

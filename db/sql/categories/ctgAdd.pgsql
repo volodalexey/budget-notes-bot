@@ -1,0 +1,29 @@
+INSERT INTO ${ctg_table:name}(
+    title, 
+    category_type, 
+    peer_id, 
+    description, 
+    created_by_user_id,
+    created_at,
+    updated_by_user_id,
+    updated_at,
+    deleted_by_user_id,
+    deleted_at,
+    archived_by_user_id,
+    archived_at
+)
+VALUES(
+    ${title}, 
+    ${category_type}, 
+    ${peer_id}, 
+    ${description}, 
+    ${created_by_user_id}, 
+    ${created_at}, 
+    ${updated_by_user_id},
+    ${updated_at},
+    ${deleted_by_user_id},
+    ${deleted_at},
+    ${archived_by_user_id},
+    ${archived_at}
+)
+RETURNING *

@@ -1,0 +1,7 @@
+.vscode
+node_modules/
+npm-debug.log
+dist/
+tdlib/
+tdlib_db/
+.app_rc.json
