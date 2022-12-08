@@ -30,6 +30,7 @@ jobs:
     - run: chmod 700 ~/.ssh
     - run: chmod 600 ~/.ssh/gh_ci_to_vps
     - run: ssh -i ~/.ssh/gh_ci_to_vps -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -p $SSH_PORT
-    - run: npm i pm2
+    - run: npm i -g pm2
+    - run: pm2 -V
     - run: SSH_KEY_PATH=~/.ssh/gh_ci_to_vps pm2 deploy ecosystem.config.js production setup 2>&1 || true
     - run: SSH_KEY_PATH=~/.ssh/gh_ci_to_vps pm2 deploy ecosystem.config.js production
