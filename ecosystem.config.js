@@ -9,6 +9,7 @@ module.exports = {
   ],
   deploy: {
     production: {
+      key: process.env.SSH_KEY_PATH,
       user: process.env.SSH_USER,
       host: process.env.SSH_HOST,
       port: process.env.SSH_PORT,

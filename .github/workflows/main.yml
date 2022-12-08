@@ -4,6 +4,14 @@ on:
   push:
     branches: [ "main" ]
 
+env:
+  SSH_USER: ${{secrets.SSH_USER}}
+  SSH_HOST: ${{secrets.SSH_HOST}}
+  SSH_PORT: ${{secrets.SSH_PORT}}
+  SSH_CWD: ${{secrets.SSH_CWD}}
+  SSH_KEY: ${{secrets.SSH_KEY}}
+  SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
+
 jobs:
   build:
 
@@ -17,3 +25,7 @@ jobs:
     - run: git status
     - run: node -v
     - run: ssh -V
+    - run: mkdir -p ~/.ssh/
+    - run: echo "$SSH_KEY" > ./gh_ci_to_vps
+    - run: chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
+    - run: ssh -i ~/.ssh/gh_ci_to_vps -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -p $SSH_PORT
