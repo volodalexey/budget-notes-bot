@@ -14,6 +14,15 @@ import { ExtendedConfig } from 'airgram/Airgram';
 import { Client } from 'tdl';
 import { TDLib } from 'tdl-tdlib-addon';
 import { logMsg, logTdLib } from '../logger/logger';
+
+// TODO temp new type
+type UserNames = {
+  _: string;
+  active_usernames: Array<string>;
+  disabled_usernames: Array<string>;
+  editable_username: string;
+};
+
 // This is mock for real Airgram until it will support tdlib 1.8.6+
 // https://github.com/airgram/airgram/issues/221
 export class Airgram {
@@ -49,7 +58,21 @@ export class Airgram {
         const response = await this.client.invoke({
           _: 'getMe',
         });
-        return { response } as unknown as ApiResponse<never, UserUnion>;
+        logTdLib('getMe:response', response);
+        return {
+          response: {
+            _: response._,
+            id: response.id,
+            username:
+              (response as unknown as { usernames: UserNames }).usernames &&
+              (response as unknown as { usernames: UserNames }).usernames._ ===
+                'usernames'
+                ? (response as unknown as { usernames: UserNames }).usernames
+                    .active_usernames[0]
+                : response.username,
+            firstName: response.first_name,
+          } as UserUnion,
+        } as unknown as ApiResponse<never, UserUnion>;
       },
       sendMessage: async (
         params?: SendMessageParams,
@@ -84,7 +107,7 @@ export class Airgram {
         ctx.message.sender_id._ === 'messageSenderUser' &&
         ctx.message.content._ === 'messageText'
       ) {
-        logTdLib(ctx);
+        logTdLib('updateNewMessage', ctx, ctx.message.content.text);
         handler({
           update: {
             _: ctx._,

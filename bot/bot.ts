@@ -22,7 +22,7 @@ import {
   TrOutReplOptions,
 } from '../i18n/i18n';
 import { UserDBModel } from '../db/models/userModel';
-import { logCtx, logRx, logMsg, logConfig } from '../logger/logger';
+import { logCtx, logRx, logMsg, logApp } from '../logger/logger';
 
 import { WeekStartsOn, parseWeekStartsOn } from './datetime';
 import {
@@ -639,10 +639,10 @@ export async function createAirgramBot(
     databaseDirectory: botConfig.tdlib_db,
     logVerbosityLevel: 1,
   };
-  logConfig('airgram options', options);
+  logApp('airgram options', options);
   const airgram = new Airgram(options);
 
-  logConfig('bot_token', botConfig.bot_token);
+  logApp('bot_token', botConfig.bot_token);
   await airgram.use(
     new Auth({
       token: botConfig.bot_token,
@@ -695,6 +695,7 @@ export async function createAirgramBot(
       first_name: ctx.response.firstName,
       username: ctx.response.username,
     };
+    logApp('botInfo', botInfo);
     return {
       airgram,
       botInfo,

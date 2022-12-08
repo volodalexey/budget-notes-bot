@@ -1,6 +1,7 @@
 import debug from 'debug';
 
 export const logConfig = debug('bnb-config');
+export const logApp = debug('bnb-app');
 export const logTdLib = debug('bnb-td-lib');
 export const logCtx = debug('bnb-ctx');
 export const logRx = debug('bnb-rx');
