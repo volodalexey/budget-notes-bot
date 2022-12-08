@@ -4,12 +4,6 @@ on:
   push:
     branches: [ "main" ]
 
-env:
-  SSH_KEY_PATH: SSH_KEY_PATH
-  SSH_USER: SSH_USER
-  SSH_HOST: SSH_HOST
-  SSH_PORT: SSH_PORT
-
 jobs:
   build:
 
@@ -17,6 +11,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: whoami
     - uses: actions/setup-node@v3
       with:
         node-version: 16
