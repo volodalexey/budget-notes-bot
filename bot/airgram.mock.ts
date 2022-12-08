@@ -13,7 +13,7 @@ import { Update as Td$Update } from 'tdlib-types';
 import { ExtendedConfig } from 'airgram/Airgram';
 import { Client } from 'tdl';
 import { TDLib } from 'tdl-tdlib-addon';
-import { logMsg } from '../logger/logger';
+import { logMsg, logTdLib } from '../logger/logger';
 // This is mock for real Airgram until it will support tdlib 1.8.6+
 // https://github.com/airgram/airgram/issues/221
 export class Airgram {
@@ -84,6 +84,7 @@ export class Airgram {
         ctx.message.sender_id._ === 'messageSenderUser' &&
         ctx.message.content._ === 'messageText'
       ) {
+        logTdLib(ctx);
         handler({
           update: {
             _: ctx._,

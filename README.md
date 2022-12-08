@@ -92,7 +92,8 @@ Path to the application config
 CONFIG=... node app.js
 ```
 
-Debug anything
+Debug anything (see all possible values
+[logger.ts](https://github.com/volodalexey/budget-notes-bot/blob/main/logger/logger.ts#L3))
 
 ```
 DEBUG=bnb* node app.js
