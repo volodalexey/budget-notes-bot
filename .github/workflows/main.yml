@@ -26,6 +26,7 @@ jobs:
     - run: node -v
     - run: ssh -V
     - run: mkdir -p ~/.ssh/
-    - run: echo "$SSH_KEY" > ./gh_ci_to_vps
-    - run: chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
+    - run: echo "$SSH_KEY" > ~/.ssh/gh_ci_to_vps
+    - run: chmod 700 ~/.ssh
+    - run: chmod 600 ~/.ssh/gh_ci_to_vps
     - run: ssh -i ~/.ssh/gh_ci_to_vps -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST -p $SSH_PORT
