@@ -1,0 +1,23 @@
+name: SSH to VPS and deploy with PM2
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  SSH_KEY_PATH: SSH_KEY_PATH
+  SSH_USER: SSH_USER
+  SSH_HOST: SSH_HOST
+  SSH_PORT: SSH_PORT
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - run: git status
