@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/volodalexey/memory-manager-bot.git"
+    "url": "git+ssh://git@github.com:volodalexey/budget-notes-bot.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/volodalexey/memory-manager-bot/issues"
+    "url": "https://github.com/volodalexey/budget-notes-bot"
   },
-  "homepage": "https://gitlab.com/volodalexey/memory-manager-bot#readme",
+  "homepage": "https://github.com/volodalexey/budget-notes-bot#readme",
   "keywords": [],
   "author": "",
   "license": "ISC",
