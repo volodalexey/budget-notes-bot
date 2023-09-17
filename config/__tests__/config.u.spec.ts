@@ -35,23 +35,22 @@ describe('Check Config', () => {
 
     expect(appConfig).toHaveProperty('test', expect.any(Object));
     const { test: testConfig } = appConfig;
-    expect(testConfig).toHaveProperty('chat_id', expect.any(Number));
-    expect(testConfig).toHaveProperty('bot_id', expect.any(Number));
-    expect(testConfig).toHaveProperty('user_id', expect.any(Number));
-    expect(testConfig).toHaveProperty('user_name', expect.any(String));
-    expect(testConfig).toHaveProperty('user_language', expect.any(String));
+    expect(testConfig).toMatchObject({
+      chat_id: expect.any(Number),
+      bot_id: expect.any(Number),
+      user_id: expect.any(Number),
+      user_name: expect.any(String),
+      user_language: expect.any(String),
+      user_time_zone: expect.any(String),
+      user_week_starts_on: expect.any(Number),
+    });
     expect(Object.values(LanguageEnum)).toContain(testConfig.user_language);
-    expect(testConfig).toHaveProperty('user_time_zone', expect.any(String));
     expect(listTimeZones()).toContain(testConfig.user_time_zone);
-    expect(testConfig).toHaveProperty(
-      'user_week_starts_on',
-      expect.any(Number),
-    );
 
     if (appConfig.admin) {
       expect(appConfig).toHaveProperty('admin', expect.any(Object));
       const { admin: adminConfig } = appConfig;
-      expect(adminConfig).toHaveProperty('user_id', expect.any(Number));
+      expect(adminConfig).toHaveProperty('user_ids', expect.any(Array));
     }
   });
 });

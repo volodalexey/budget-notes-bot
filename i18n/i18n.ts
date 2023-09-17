@@ -168,7 +168,7 @@ function tRepl(
             case KeyboardButtonEnum.url:
               buttons.push({
                 _: 'inlineKeyboardButton',
-                text: i18next.t(TrStrKey(key), data),
+                text: String(i18next.t(TrStrKey(key), data)),
                 type: {
                   _: 'inlineKeyboardButtonTypeUrl',
                   url: (trBtn as TrKeyboardButtonUrl).url,
@@ -178,7 +178,7 @@ function tRepl(
             case KeyboardButtonEnum.callback:
               buttons.push({
                 _: 'inlineKeyboardButton',
-                text: i18next.t(TrStrKey(key), data),
+                text: String(i18next.t(TrStrKey(key), data)),
                 type: {
                   _: 'inlineKeyboardButtonTypeCallback',
                   data: (trBtn as TrKeyboardButtonCallback).callback_data,
@@ -220,7 +220,7 @@ export function t(toTranslate: ToTranslate): TrResult {
     }
   }
   const outReplOptions = tRepl(replOptions, data);
-  return { text: i18next.t(TrStrKey(key), data), outReplOptions };
+  return { text: String(i18next.t(TrStrKey(key), data)), outReplOptions };
 }
 
 export function interpolateData(str: string, data: TrData): string {

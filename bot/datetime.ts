@@ -43,6 +43,11 @@ export function get12Hours(datetime: Date, timeZone: string): string {
 export enum WeekStartsOn {
   Sunday = 0,
   Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
 }
 
 export function parseWeekStartsOn(

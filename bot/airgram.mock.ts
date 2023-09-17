@@ -69,7 +69,7 @@ export class Airgram {
                 'usernames'
                 ? (response as unknown as { usernames: UserNames }).usernames
                     .active_usernames[0]
-                : response.username,
+                : 'test_mock_username',
             firstName: response.first_name,
           } as UserUnion,
         } as unknown as ApiResponse<never, UserUnion>;
