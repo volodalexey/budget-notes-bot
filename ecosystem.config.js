@@ -18,6 +18,7 @@ module.exports = {
       repo: 'git@github.com:volodalexey/budget-notes-bot.git',
       path: process.env.SSH_CWD,
       'post-deploy': [
+        'ln -sf ../.app_rc.json ./.app_rc.json',
         process.env.PGPASSWORD
           ? `PGPASSWORD=${process.env.PGPASSWORD} pg_dump --username=${process.env.SSH_USER} --no-owner memory > ~/memory-backups/memory_$(date +%d_%m_%y).bak`
           : false,
